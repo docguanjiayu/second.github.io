@@ -26,7 +26,7 @@
 
         form {
             background: #FFF;
-            height: 300px;
+            height: 400px;
             width: 100%;
             border-radius: 10px;
             position: relative;
@@ -87,34 +87,64 @@
 <body>
     <div class="container">
         <h1>用户登录</h1>
-        <form>
+        
             <br>
+            <label for="username">昵称</label><br>
+            <input type="text" name="username" id="use" class="input" value="" placeholder="用户名id"><br>
             <label for="username">用户名</label><br>
-            <input type="text" name="username" id="username" class="input" value="" placeholder="用户名admin"><br>
+            <input type="text" name="userid" id="useid" class="input" value="" placeholder="用户名"><br>
             <label for="pwd">密码</label><br>
-            <input type="password" name="" id="pwd" class="input" value="" placeholder="密码admin">
-            <div class="checkbox">
-                <input type="checkbox" name="">
-                <span>记住密码</span>
-            </div>
-            <button type="submit" class="submit" onclick="submits(this)">开始登录</button>
+            <input type="password" name="" id="pwd" class="input" value="" placeholder="密码">
+           
+            <button onclick="submits()">开始登录</button>
             <br>
             <a href="index.html" class="left">返回首页</a>
             <a href="register.html" class="right">注册账号</a>
-        </form>
+        
     </div>
     <script>
-        function submits(btn) {
-            var userName = document.getElementById("username").value;
-            var pwd = document.getElementById("pwd").value;
-            console.log(userName)
-            if (userName == "admin" && pwd == "admin") {
-                alert("用户名和密码正确，但是连接服务器失败！")
+       
+            //获取用户名;
+            //封装注册方法
+            function submits() {
+                //获取事件的value 
+    
+                //这里调用存入本地的数据
+                
+                const myHeaders = new Headers()
+                myHeaders.append("Content-Type", "application/json")
+                let requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    redirect: "follow",
+                }
+                requestOptions.body = JSON.stringify({id: document.querySelector('#useid').value
+                    ,password: document.querySelector('#pwd').value
+                    ,name: document.querySelector('#use').value
+                    ,   // 初始化一个空的待办清单
+                });
+                
+                var response;
+                var data;
+                var err;
+                console.log(requestOptions.body)
+                fetch(`${'http://123.60.44.50:3000'}/${'users'}`, requestOptions) // 这里的网址没有id
+                    .then(response => response.json())
+                    .then(data => console.log(data.id))  //新创建后的数据的id
+                    .catch(err => console.log(err))
+    
+                alert('注册成功 ! ! !')
             }
-            else {
-                alert("用户名或密码不正确！");
-            }
-        };
+            
+    
+            
+    
+    
+    
+    
+    
+            
+            
     </script>
 </body>
 
