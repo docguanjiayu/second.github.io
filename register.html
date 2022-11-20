@@ -7,6 +7,7 @@
     <style>
         body {
             background: #159f9f;
+            opacity: 60%;
         }
 
         .container {
@@ -95,40 +96,58 @@
 <body>
     <div class="container">
         <h1>新用户注册</h1>
-        <form>
+        
             <br>
             <span class="p">*</span>
             <label for="username">用户名</label>
-            <input type="text" name="" id="username" placeholder="" class="register"><br><br>
+            <input type="text" name="" id="useid" placeholder="" class="register"><br><br>
             <span class="p">*</span>
-            <label for="phonenumber">手机号</label>
-            <input type="text" name="" id="phonenumber" class="register">
+            <label for="phonenumber">昵称</label>
+            <input type="text" name="" id="use" class="register">
             <br><br>
             <span class="q">*</span>
             <label for="pwd">登录密码</label>
             <input type="password" name="" id="pwd" class="register"><br><br>
-            <span class="q">*</span>
-            <label for="c_pwd">确认密码</label>
-            <input type="password" name="" id="c_pwd" class="register"><br><br>
-
-            <input type="checkbox" class="checkbox" name="">
-            <span style="font-size:15px">我已阅读并同意《用户注册协议》</span>
-            <br><br>
-            <input type="submit" name="" value="同意以上协议并注册" class="submit" onclick="register(this)"><br>
+          
+            <input type="submit" name="" value="注册" class="submit" onclick="register(this)"><br>
             <a href="index.html" class="left">返回首页</a>
             <a href="login.html" class="right">开始登录</a>
-        </form>
+        
     </div>
     <script>
-        var checkbox = document.getElementsByClassName('checkbox');
-        function register(btn) {
-            if (checkbox[0].checked == true) {
-                alert("注册成功！");
+       
+            //获取用户名;
+            //封装注册方法
+            function register() {
+                //获取事件的value 
+    
+                //这里调用存入本地的数据
+                
+                const myHeaders = new Headers()
+                myHeaders.append("Content-Type", "application/json")
+                let requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    redirect: "follow",
+                }
+                requestOptions.body = JSON.stringify({id: document.querySelector('#useid').value
+                    ,password: document.querySelector('#pwd').value
+                    ,name: document.querySelector('#use').value
+                    ,   // 初始化一个空的待办清单
+                });
+                
+                var response;
+                var data;
+                var err;
+                console.log(requestOptions.body)
+                fetch(`${'http://123.60.44.50:3000'}/${'users'}`, requestOptions) // 这里的网址没有id
+                    .then(response => response.json())
+                    .then(data => console.log(data.id))  //新创建后的数据的id
+                    .catch(err => console.log(err))
+    
+                alert('注册成功 ! ! !')
             }
-            else {
-                alert("请先阅读并同意《用户注册协议》！")
-            }
-        }
+            
     </script>
 </body>
 
