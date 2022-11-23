@@ -121,7 +121,7 @@
             // alert(use);
             var data;
             var response;
-            fetch(`${'http://123.60.44.50:3000'}/${'users'}/${use}`, requestOptions)
+            fetch(`${'https://db.api.orght.cn'}/${'users'}/${use}`, requestOptions)
                 .then(response => response.json())
                 .then(data => {
                     if (data.id === use) {
