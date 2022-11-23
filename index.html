@@ -50,10 +50,6 @@
             margin-left: 40px;
         }
 
-        .checkbox {
-            margin-left: 30px;
-        }
-
         a {
             text-decoration: none;
             font-weight: bold;
@@ -73,13 +69,8 @@
             border-radius: 5px;
         }
 
-        .left {
+        #left {
             margin: 20px;
-        }
-
-        .right {
-            position: absolute;
-            right: 20px;
         }
     </style>
 </head>
@@ -87,21 +78,23 @@
 <body>
     <div class="container">
         <h1>用户登录</h1>
-        
-           
-            <label for="username">用户名</label><br>
-            <input type="text" name="userid" id="useid" class="input" value="" placeholder="用户名"><br>
-            <label for="pwd">密码</label><br>
-            <input type="password" name="" id="pwd" class="input" value="" placeholder="密码">
-           
-            <button onclick="login()">开始登录</button>
-            <br>
-            <a href="index.html" class="left">返回首页</a>
-            <a href="register.html" class="right">注册账号</a>
-        
+
+
+        <label for="username">用户名</label><br>
+        <input type="text" name="username" id="useid" class="input" value="" placeholder="用户名"><br>
+
+        <label for="pwd">密码</label><br>
+        <input type="password" name="" id="pwd" class="input" value="" placeholder="密码">
+
+        <button type="submit" class="submit" onclick="login()">开始登录</button>
+
+
+        <button type="submit" class="submit" id="left"><a href="register.html">注册账号</a></button>
+
+
     </div>
     <script>
-       
+
         var use = "";
 
         var cbx = document.getElementById('cbx');
@@ -146,15 +139,15 @@
             // alert('登陆成功');
 
         }
-    
-            
-    
-    
-    
-    
-    
-            
-            
+
+
+
+
+
+
+
+
+
     </script>
 </body>
 
