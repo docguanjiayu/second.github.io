@@ -143,10 +143,10 @@
             console.log(requestOptions.body)
             fetch(`${'https://db-api.amarea.cn'}/${'users'}`, requestOptions) // 这里的网址没有id
                 .then(response => response.json())
-                .then(data => console.log(data.id))  //新创建后的数据的id
-                .catch(err => console.log(err))
+                .then(data => alert("注册成功，id为" + data.id))
 
-            alert('注册成功 ! ! !')
+                .catch(err => alert("注册失败，已有账号" + err))
+
         }
 
     </script>
