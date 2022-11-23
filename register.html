@@ -141,7 +141,7 @@
             var data;
             var err;
             console.log(requestOptions.body)
-            fetch(`${'https://db.api.orght.cn'}/${'users'}`, requestOptions) // 这里的网址没有id
+            fetch(`${'https://db-api.amarea.cn'}/${'users'}`, requestOptions) // 这里的网址没有id
                 .then(response => response.json())
                 .then(data => console.log(data.id))  //新创建后的数据的id
                 .catch(err => console.log(err))
